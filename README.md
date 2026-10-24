@@ -7,7 +7,7 @@ You sit behind a spaceship and fly from station to station.
 
 ## Stations
 
-1. **Hangar** – all links at a glance
+1. **Hangar** – what I do
 2. **Projects** – Solarum, Mindful, Toms Tools
 3. **About me** – what matters to me
 4. **Workshop** – what's in the making

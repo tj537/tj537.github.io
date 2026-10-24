@@ -1,32 +1,31 @@
 # tj537.github.io
 
-Meine persönliche Website – keine klassische Seite, sondern ein Flug durchs All.
-Du sitzt hinter einem Raumschiff und fliegst von Station zu Station.
+My personal website – not a classic page, but a flight through space.
+You sit behind a spaceship and fly from station to station.
 
 **▶︎ [tj537.github.io](https://tj537.github.io/)**
 
-## Stationen
+## Stations
 
-1. **Hangar** – alle Links auf einen Blick
-2. **Sternenkarte** – Inhaltsverzeichnis, jedes Ziel per Warp erreichbar
-3. **Projekte** – Solarum, Mindful, Toms Tools
-4. **Über mich** – was mir wichtig ist
-5. **Werkstatt** – was gerade entsteht
-6. **Funkspruch** – Kontakt & Feedback
+1. **Hangar** – all links at a glance
+2. **Projects** – Solarum, Mindful, Toms Tools
+3. **About me** – what matters to me
+4. **Workshop** – what's in the making
+5. **Transmission** – contact & feedback
 
-## Steuerung
+## Controls
 
-- Scrollen, wischen, Pfeiltasten oder aufs Raumschiff tippen → nächste Station
-- Tasten `1`–`6` oder die Punkte rechts → Warp direkt zum Ziel
-- Jede Station hat eine eigene URL (`#projekte`, `#ueber-mich`, …)
+- Scroll, swipe, arrow keys or tap the spaceship → next station
+- Dropdown at the bottom left, keys `1`–`5` or the dots on the right → warp straight to a station
+- Every station has its own URL (`#projects`, `#about`, …)
 
-## Technik
+## Tech
 
-Reines HTML, CSS und JavaScript mit [Three.js](https://threejs.org/) – kein Build-Schritt.
-Ohne WebGL oder JavaScript zeigt die Seite alle Inhalte als normale Liste.
-Respektiert „Bewegung reduzieren“. Kein Tracking, keine Cookies.
+Plain HTML, CSS and JavaScript with [Three.js](https://threejs.org/) – no build step.
+Without WebGL or JavaScript the page shows all content as a simple list.
+Respects "reduce motion". No tracking, no cookies.
 
-Lokal starten:
+Run locally:
 
 ```bash
 python3 -m http.server 5173

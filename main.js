@@ -14,13 +14,12 @@ const coarse = matchMedia('(pointer: coarse)').matches;
 /* ------------------------------------------------------------------ UI */
 
 const rail = document.querySelector('.rail');
-const toc = document.querySelector('.toc');
 const hudNum = document.querySelector('.hud-num');
 const hudName = document.querySelector('.hud-name');
-const nextBtn = document.querySelector('.next');
-const nextName = document.querySelector('.next-name');
-const nextLabel = document.querySelector('.next-label');
-const nextArr = document.querySelector('.next-arr');
+const jumpBtn = document.querySelector('.jump-btn');
+const jumpNum = document.querySelector('.jump-num');
+const jumpName = document.querySelector('.jump-name');
+const jumpMenu = document.querySelector('.jump-menu');
 document.querySelector('.hud-total').textContent = String(N).padStart(2, '0');
 
 const pad = (i) => String(i + 1).padStart(2, '0');
@@ -34,25 +33,50 @@ stops.forEach((s, i) => {
   rail.append(b);
 
   const li = document.createElement('li');
-  li.innerHTML = `<button type="button" data-go="${i}"><span class="n">${pad(i)}</span>
-    <span class="t"><b>${s.dataset.name}</b><small>${s.dataset.desc}</small></span><span class="w">Warp →</span></button>`;
-  toc.append(li);
+  li.role = 'option';
+  li.tabIndex = -1;
+  li.dataset.go = i;
+  li.innerHTML = `<span class="n">${pad(i)}</span><span class="t"><b>${s.dataset.name}</b><small>${s.dataset.desc}</small></span>`;
+  jumpMenu.append(li);
 });
 
 function setUI(i) {
   hudNum.textContent = pad(i);
   hudName.textContent = stops[i].dataset.name;
-  document.querySelectorAll('[data-go]').forEach((el) => {
-    if (el.closest('.rail, .toc')) {
-      if (+el.dataset.go === i) el.setAttribute('aria-current', 'step');
-      else el.removeAttribute('aria-current');
-    }
+  rail.querySelectorAll('[data-go]').forEach((el) => {
+    if (+el.dataset.go === i) el.setAttribute('aria-current', 'step');
+    else el.removeAttribute('aria-current');
   });
-  const last = i === N - 1;
-  nextLabel.textContent = last ? 'Warp' : 'Weiter';
-  nextName.textContent = last ? 'Zurück zum Start' : stops[i + 1].dataset.name;
-  nextArr.textContent = last ? '↺' : '↓';
+  jumpMenu.querySelectorAll('[data-go]').forEach((el) => el.setAttribute('aria-selected', String(+el.dataset.go === i)));
+  jumpNum.textContent = pad(i);
+  jumpName.textContent = stops[i].dataset.name;
 }
+
+function toggleMenu(open = jumpMenu.hidden) {
+  jumpMenu.hidden = !open;
+  jumpBtn.setAttribute('aria-expanded', String(open));
+  if (open) (jumpMenu.querySelector('[aria-selected="true"]') || jumpMenu.firstElementChild).focus();
+}
+jumpBtn.addEventListener('click', () => toggleMenu());
+jumpMenu.addEventListener('keydown', (e) => {
+  const items = [...jumpMenu.children];
+  const k = items.indexOf(document.activeElement);
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    e.stopPropagation();
+    items[(k + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length].focus();
+  } else if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    e.stopPropagation();
+    document.activeElement.click();
+  } else if (e.key === 'Escape') {
+    toggleMenu(false);
+    jumpBtn.focus();
+  }
+});
+document.addEventListener('click', (e) => {
+  if (!jumpMenu.hidden && !e.target.closest('.jump')) toggleMenu(false);
+});
 
 function showStop(i) {
   stops.forEach((s, k) => {
@@ -87,9 +111,10 @@ try {
 }
 
 if (renderer) start();
+else root.classList.remove('space');
 
 function start() {
-  root.classList.add('space');
+  root.classList.add('space', 'started');
 
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x07051a, 0.0026);
@@ -411,24 +436,7 @@ function start() {
       g.userData.tick = (t) => rings.forEach((r, i) => { r.rotation.x = Math.sin(t * 0.3 + i) * 0.5; r.rotation.y = t * (0.15 + i * 0.07); });
       return g;
     },
-    // 02 Star map – wireframe orb with nodes
-    () => {
-      const g = new THREE.Group();
-      const geo = new THREE.IcosahedronGeometry(6, 1);
-      const wire = new THREE.LineSegments(new THREE.WireframeGeometry(geo), new THREE.LineBasicMaterial({ color: 0x5ee7ff, transparent: true, opacity: 0.55 }));
-      g.add(wire);
-      const nodes = new THREE.Points(geo, new THREE.PointsMaterial({ size: 1.2, map: spriteTex, color: new THREE.Color(0xffffff).multiplyScalar(2), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
-      g.add(nodes);
-      const core = new THREE.Mesh(new THREE.IcosahedronGeometry(2.2, 0), physical(0x8b7bff, { flatShading: true, iridescence: 1, metalness: 0.6 }));
-      g.add(core);
-      const orbit = new THREE.Mesh(new THREE.TorusGeometry(9, 0.04, 8, 160), new THREE.MeshBasicMaterial({ color: new THREE.Color(0xffb38a).multiplyScalar(1.6) }));
-      orbit.rotation.x = 1.2;
-      g.add(orbit);
-      g.add(glowSprite(0x5ee7ff, 22));
-      g.userData.tick = (t) => { wire.rotation.y = nodes.rotation.y = t * 0.12; core.rotation.x = t * 0.4; core.rotation.y = t * 0.3; orbit.rotation.z = t * 0.2; };
-      return g;
-    },
-    // 03 Projects – three planets orbiting a sun
+    // 02 Projects – three planets orbiting a sun
     () => {
       const g = new THREE.Group();
       const sun = new THREE.Mesh(new THREE.SphereGeometry(2.4, 48, 24), new THREE.MeshBasicMaterial({ color: new THREE.Color(0xffc9a6).multiplyScalar(1.3) }));
@@ -456,7 +464,7 @@ function start() {
       g.userData.tick = (t) => planets.forEach((p) => { p.pivot.rotation.y = p.o + t * p.s; p.m.rotation.y = t; });
       return g;
     },
-    // 04 About – an iridescent knot
+    // 03 About – an iridescent knot
     () => {
       const g = new THREE.Group();
       const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(4, 1.1, 220, 32, 2, 3),
@@ -465,7 +473,7 @@ function start() {
       g.userData.tick = (t) => { knot.rotation.x = t * 0.15; knot.rotation.y = t * 0.22; };
       return g;
     },
-    // 05 Workshop – floating tiles assembling
+    // 04 Workshop – floating tiles assembling
     () => {
       const g = new THREE.Group();
       const cubes = [];
@@ -485,7 +493,7 @@ function start() {
       };
       return g;
     },
-    // 06 Beacon – antenna sending pulses
+    // 05 Beacon – antenna sending pulses
     () => {
       const g = new THREE.Group();
       const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.4, 12, 16), physical(0xdcd6ff, { metalness: 0.9 }));
@@ -560,9 +568,9 @@ function start() {
     const el = e.target.closest('[data-go]');
     if (!el) return;
     e.preventDefault();
+    if (el.closest('.jump-menu')) { toggleMenu(false); jumpBtn.focus(); }
     go(+el.dataset.go);
   });
-  nextBtn.addEventListener('click', next);
   addEventListener('hashchange', () => {
     const i = stops.findIndex((s) => '#' + s.id === location.hash);
     if (i >= 0) go(i);
@@ -614,7 +622,7 @@ function start() {
   }, { passive: true });
 
   addEventListener('keydown', (e) => {
-    if (e.target.closest && e.target.closest('input, textarea')) return;
+    if (e.target.closest && e.target.closest('input, textarea, .jump-menu')) return;
     const k = e.key;
     if (['ArrowDown', 'PageDown', 'ArrowRight'].includes(k) || (k === ' ' && !e.target.closest('button, a'))) { e.preventDefault(); next(); }
     else if (['ArrowUp', 'PageUp', 'ArrowLeft'].includes(k)) { e.preventDefault(); prev(); }

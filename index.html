@@ -1,19 +1,32 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Tom · tj537</title>
-  <meta name="description" content="Tom baut kleine Apps, die er selbst benutzen will – Solarum, Mindful, Toms Tools und mehr. Eine Reise durchs All.">
+  <meta name="description" content="Tom builds small apps he wants to use himself – Solarum, Mindful, Toms Tools and more. A journey through space.">
   <meta name="theme-color" content="#05040d">
   <meta property="og:title" content="Tom · tj537">
-  <meta property="og:description" content="Kleine Apps, gutes Design, offener Code. Steig ein und flieg mit.">
+  <meta property="og:description" content="Small apps, good design, open code. Hop in and fly along.">
   <meta property="og:image" content="https://raw.githubusercontent.com/tj537/solarum/main/docs/images/solarum.jpg">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7bff'/%3E%3Cstop offset='1' stop-color='%235ee7ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='14' fill='url(%23g)'/%3E%3Cellipse cx='32' cy='32' rx='29' ry='9' fill='none' stroke='%23ffb38a' stroke-width='3' transform='rotate(-24 32 32)'/%3E%3C/svg%3E">
+  <script>
+    // Enter space mode before first paint so the flat fallback never flashes.
+    (() => {
+      const root = document.documentElement;
+      try {
+        const c = document.createElement('canvas');
+        if (!(c.getContext('webgl2') || c.getContext('webgl'))) return;
+      } catch (e) { return; }
+      root.classList.add('space');
+      // If the 3D scene never starts (e.g. CDN unreachable), show the flat page.
+      setTimeout(() => { if (!root.classList.contains('started')) root.classList.remove('space'); }, 12000);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script type="importmap">
     {
@@ -30,180 +43,146 @@
 
   <div class="loader" aria-hidden="true">
     <div class="loader-orb"></div>
-    <p>Systeme starten …</p>
+    <p>Starting systems …</p>
   </div>
 
   <header class="hud-top">
-    <a class="brand" href="#hangar" data-go="0" aria-label="Zum Start">
+    <a class="brand" href="#hangar" data-go="0" aria-label="Back to start">
       <span class="brand-mark"></span>
       <span>Tom<em>/tj537</em></span>
     </a>
     <div class="hud-status" aria-live="polite">
-      <span class="hud-num">01</span><span class="hud-sep">/</span><span class="hud-total">06</span>
+      <span class="hud-num">01</span><span class="hud-sep">/</span><span class="hud-total">05</span>
       <span class="hud-name">Hangar</span>
     </div>
   </header>
 
-  <nav class="rail" aria-label="Stationen"></nav>
+  <nav class="rail" aria-label="Stations"></nav>
 
   <main id="stops">
 
     <!-- 01 · Links -->
-    <section class="stop" id="hangar" data-name="Hangar" data-desc="Alle Links auf einen Blick">
+    <section class="stop" id="hangar" data-name="Hangar" data-desc="All links at a glance">
       <div class="panel">
         <p class="eyebrow"><span>01</span> Hangar</p>
-        <h1 class="title">Hi, ich bin <em>Tom.</em></h1>
-        <p class="lead">Ich baue kleine Apps, die ich selbst benutzen will – und lerne dabei Programmieren mit KI.</p>
+        <h1 class="title">Hi, I'm <em>Tom.</em></h1>
+        <p class="lead">I build small apps that I want to use myself – and learn programming with AI along the way.</p>
         <ul class="links">
           <li><a class="link" href="https://github.com/tj537" target="_blank" rel="noopener">
             <span class="ico"><svg viewBox="0 0 24 24"><path d="M8 7 3 12l5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
-            <span class="link-txt"><b>GitHub</b><small>Mein ganzer Code, offen</small></span><span class="arr">↗</span></a></li>
+            <span class="link-txt"><b>GitHub</b><small>All my code, open source</small></span><span class="arr">↗</span></a></li>
           <li><a class="link" href="https://tj537.github.io/solarum/" target="_blank" rel="noopener">
             <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-25 12 12)"/></svg></span>
-            <span class="link-txt"><b>Solarum</b><small>Techno von einem anderen Planeten</small></span><span class="arr">↗</span></a></li>
+            <span class="link-txt"><b>Solarum</b><small>Techno from another planet</small></span><span class="arr">↗</span></a></li>
           <li><a class="link" href="https://tj537.github.io/toms-tools/" target="_blank" rel="noopener">
             <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 13h18"/></svg></span>
-            <span class="link-txt"><b>Toms Tools</b><small>32 Offline-Tools in einer Datei</small></span><span class="arr">↗</span></a></li>
+            <span class="link-txt"><b>Toms Tools</b><small>32 offline tools in one file</small></span><span class="arr">↗</span></a></li>
           <li><a class="link" href="https://github.com/tj537/mindful" target="_blank" rel="noopener">
             <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><circle cx="4.5" cy="6" r="1.8"/><circle cx="19.5" cy="6" r="1.8"/><circle cx="12" cy="20" r="1.8"/><path d="M10 11 6 7M14 11l4-4M12 14.5v3.7"/></svg></span>
-            <span class="link-txt"><b>Mindful</b><small>Mind Maps, Markdown &amp; Folien</small></span><span class="arr">↗</span></a></li>
+            <span class="link-txt"><b>Mindful</b><small>Mind maps, Markdown &amp; slides</small></span><span class="arr">↗</span></a></li>
           <li><a class="link" href="https://tj537.github.io/notsure/" target="_blank" rel="noopener">
             <span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="9" cy="9" r="1.2"/><circle cx="15" cy="15" r="1.2"/><circle cx="15" cy="9" r="1.2"/><circle cx="9" cy="15" r="1.2"/></svg></span>
-            <span class="link-txt"><b>NotSure</b><small>Lass den Zufall entscheiden</small></span><span class="arr">↗</span></a></li>
-          <li><a class="link" href="https://tj537.github.io/fischersteelworx/" target="_blank" rel="noopener">
-            <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9Z"/></svg></span>
-            <span class="link-txt"><b>Fischer Steelworx</b><small>Schweißkunst aus Hermaringen</small></span><span class="arr">↗</span></a></li>
-          <li><a class="link" href="https://tj537.github.io/max/" target="_blank" rel="noopener">
-            <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 6a2 2 0 1 1 2-2M12 6v2L3 15a1 1 0 0 0 .6 1.8h16.8A1 1 0 0 0 21 15l-9-7"/></svg></span>
-            <span class="link-txt"><b>Max</b><small>Mode, Designs &amp; BLVACKOUTCLOTHING</small></span><span class="arr">↗</span></a></li>
+            <span class="link-txt"><b>NotSure</b><small>Let chance decide</small></span><span class="arr">↗</span></a></li>
         </ul>
       </div>
     </section>
 
-    <!-- 02 · Inhaltsverzeichnis -->
-    <section class="stop" id="sternenkarte" data-name="Sternenkarte" data-desc="Inhaltsverzeichnis mit Warp">
-      <div class="panel">
-        <p class="eyebrow"><span>02</span> Sternenkarte</p>
-        <h2 class="title">Wohin <em>soll's gehen?</em></h2>
-        <p class="lead">Wähl ein Ziel – der Warpantrieb bringt dich sofort hin.</p>
-        <ol class="toc"></ol>
-        <p class="tip">Tipp: Tasten <kbd>1</kbd>–<kbd>6</kbd> springen direkt, <kbd>↑</kbd> <kbd>↓</kbd> fliegen weiter.</p>
-      </div>
-    </section>
-
-    <!-- 03 · Projekte -->
-    <section class="stop" id="projekte" data-name="Projekte" data-desc="Solarum, Mindful, Toms Tools">
+    <!-- 02 · Projects -->
+    <section class="stop" id="projects" data-name="Projects" data-desc="Solarum, Mindful, Toms Tools">
       <div class="panel panel-wide">
-        <p class="eyebrow"><span>03</span> Projekte</p>
-        <h2 class="title">Woran ich <em>baue.</em></h2>
+        <p class="eyebrow"><span>02</span> Projects</p>
+        <h2 class="title">What I'm <em>building.</em></h2>
         <div class="projects">
           <article class="project" style="--hue: 265">
-            <a class="shot" href="https://tj537.github.io/solarum/" target="_blank" rel="noopener" tabindex="-1">
-              <img src="https://raw.githubusercontent.com/tj537/solarum/main/docs/images/solarum.jpg" alt="Solarum: Drum Machine als Sonnensystem" loading="lazy">
-            </a>
-            <div class="project-body">
-              <h3>Solarum <span class="tag">Rust</span></h3>
-              <p>Eine Drum Machine für Leute, die noch nie eine benutzt haben. Jeder Sound ist eine Umlaufbahn, jeder Beat ein Planet – Bass und Acid inklusive. Roboter Solari würfelt Grooves oder spielt ein ganzes Set mit Drops.</p>
-              <div class="btns">
-                <a class="btn" href="https://tj537.github.io/solarum/" target="_blank" rel="noopener">Website</a>
-                <a class="btn ghost" href="https://github.com/tj537/solarum" target="_blank" rel="noopener">Code</a>
-              </div>
+            <h3>Solarum <span class="tag">Rust</span></h3>
+            <p>A drum machine for people who have never used one. Every sound is an orbit, every beat a planet – bass and acid included. Solari the robot rolls grooves or plays a whole set with drops.</p>
+            <div class="btns">
+              <a class="btn" href="https://tj537.github.io/solarum/" target="_blank" rel="noopener">Website</a>
+              <a class="btn ghost" href="https://github.com/tj537/solarum" target="_blank" rel="noopener">Code</a>
             </div>
           </article>
           <article class="project" style="--hue: 190">
-            <a class="shot" href="https://github.com/tj537/mindful" target="_blank" rel="noopener" tabindex="-1">
-              <img src="https://raw.githubusercontent.com/tj537/mindful/main/docs/social-preview.png" alt="Mindful: Mind Maps, Markdown und Präsentationen" loading="lazy">
-            </a>
-            <div class="project-body">
-              <h3>Mindful <span class="tag">Rust</span></h3>
-              <p>Mind Maps, Markdown und Präsentationen in einer kleinen App für Mac und Windows. Einmal gliedern, als Folien zeigen – mit Diagrammen, Presenter-Ansicht und Handy als Fernbedienung.</p>
-              <div class="btns">
-                <a class="btn" href="https://github.com/tj537/mindful/releases/latest" target="_blank" rel="noopener">Download</a>
-                <a class="btn ghost" href="https://github.com/tj537/mindful" target="_blank" rel="noopener">Code</a>
-              </div>
+            <h3>Mindful <span class="tag">Rust</span></h3>
+            <p>Mind maps, Markdown and presentations in one small app for Mac and Windows. Outline once, present as slides – with diagrams, presenter view and your phone as a remote.</p>
+            <div class="btns">
+              <a class="btn" href="https://github.com/tj537/mindful/releases/latest" target="_blank" rel="noopener">Download</a>
+              <a class="btn ghost" href="https://github.com/tj537/mindful" target="_blank" rel="noopener">Code</a>
             </div>
           </article>
           <article class="project" style="--hue: 25">
-            <a class="shot" href="https://tj537.github.io/toms-tools/" target="_blank" rel="noopener" tabindex="-1">
-              <img src="https://raw.githubusercontent.com/tj537/toms-tools/main/docs/social-preview.png" alt="Toms Tools: 32 Offline-Tools in einer HTML-Datei" loading="lazy">
-            </a>
-            <div class="project-body">
-              <h3>Toms Tools <span class="tag">HTML</span></h3>
-              <p>32 kleine Werkzeuge in einer einzigen HTML-Datei: PDFs, Bilder, Screenshots, Mind Maps, SWOT, Karteikarten und mehr. Läuft offline im Browser, ohne Installation, ohne Adminrechte.</p>
-              <div class="btns">
-                <a class="btn" href="https://tj537.github.io/toms-tools/" target="_blank" rel="noopener">Ausprobieren</a>
-                <a class="btn ghost" href="https://github.com/tj537/toms-tools" target="_blank" rel="noopener">Code</a>
-              </div>
+            <h3>Toms Tools <span class="tag">HTML</span></h3>
+            <p>32 small tools in a single HTML file: PDFs, images, screenshots, mind maps, SWOT, flashcards and more. Runs offline in the browser, no install, no admin rights.</p>
+            <div class="btns">
+              <a class="btn" href="https://tj537.github.io/toms-tools/" target="_blank" rel="noopener">Try it</a>
+              <a class="btn ghost" href="https://github.com/tj537/toms-tools" target="_blank" rel="noopener">Code</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 04 · Über mich -->
-    <section class="stop" id="ueber-mich" data-name="Über mich" data-desc="Was mir wichtig ist">
+    <!-- 03 · About -->
+    <section class="stop" id="about" data-name="About me" data-desc="What matters to me">
       <div class="panel">
-        <p class="eyebrow"><span>04</span> Über mich</p>
-        <h2 class="title">Was mir <em>wichtig ist.</em></h2>
-        <p class="lead">Ich bin Tom aus Deutschland. Ich baue Software so, wie ich sie selbst gern hätte: klein, schnell, schön – und ehrlich zu den Menschen, die sie benutzen.</p>
+        <p class="eyebrow"><span>03</span> About me</p>
+        <h2 class="title">What <em>matters to me.</em></h2>
+        <p class="lead">I'm Tom from Germany. I build software the way I'd want it myself: small, fast, beautiful – and honest with the people who use it.</p>
         <ul class="values">
-          <li><span class="v-ico">◐</span><div><b>Nützliche Alltags-Apps</b><p>Klein, schnell und modern. Geschrieben in HTML oder Rust – Werkzeuge, die einfach funktionieren.</p></div></li>
-          <li><span class="v-ico">✦</span><div><b>Design &amp; UX</b><p>Ich liebe unkonventionelle, intuitive Oberflächen mit starker Ästhetik – und Apps, die man sich zu eigen machen kann.</p></div></li>
-          <li><span class="v-ico">◎</span><div><b>Privatsphäre &amp; Open Source</b><p>Deine Dateien bleiben auf deinem Rechner. Der Code bleibt offen. Kein Tracking, keine Cookies – auch hier nicht.</p></div></li>
-          <li><span class="v-ico">∞</span><div><b>Lernen mit KI</b><p>Jedes Projekt ist auch ein Experiment: Wie weit komme ich, wenn Mensch und KI zusammen bauen?</p></div></li>
+          <li><span class="v-ico">◐</span><div><b>Useful everyday apps</b><p>Small, fast and modern. Written in HTML or Rust – tools that just work.</p></div></li>
+          <li><span class="v-ico">✦</span><div><b>Design &amp; UX</b><p>I love unconventional, intuitive interfaces with strong aesthetics – and apps you can make your own.</p></div></li>
+          <li><span class="v-ico">◎</span><div><b>Privacy &amp; open source</b><p>Your files stay on your computer. The code stays open. No tracking, no cookies – not here either.</p></div></li>
+          <li><span class="v-ico">∞</span><div><b>Learning with AI</b><p>Every project is also an experiment: how far can I get when a human and an AI build together?</p></div></li>
         </ul>
       </div>
     </section>
 
-    <!-- 05 · Werkstatt -->
-    <section class="stop" id="werkstatt" data-name="Werkstatt" data-desc="Was gerade entsteht">
+    <!-- 04 · Workshop -->
+    <section class="stop" id="workshop" data-name="Workshop" data-desc="What's in the making">
       <div class="panel">
-        <p class="eyebrow"><span>05</span> Werkstatt</p>
-        <h2 class="title">Gerade <em>in Arbeit.</em></h2>
-        <p class="lead">Experimente, Prototypen und Dinge, die noch wachsen.</p>
+        <p class="eyebrow"><span>04</span> Workshop</p>
+        <h2 class="title">Currently <em>in progress.</em></h2>
+        <p class="lead">Experiments, prototypes and things that are still growing.</p>
         <ul class="wip">
           <li>
-            <div class="wip-head"><b>Tessera</b><span class="status building">im Bau</span></div>
-            <p>Generative Poster: Design wählen, an Reglern drehen, druckfertiges PNG bis A2 exportieren.</p>
-            <a href="https://github.com/tj537/tessera" target="_blank" rel="noopener">Code ansehen ↗</a>
+            <div class="wip-head"><b>Tessera</b><span class="status building">building</span></div>
+            <p>Generative posters: pick a design, turn the knobs, export a print-ready PNG up to A2.</p>
+            <a href="https://github.com/tj537/tessera" target="_blank" rel="noopener">View code ↗</a>
           </li>
           <li>
-            <div class="wip-head"><b>Filmriss</b><span class="status building">im Bau</span></div>
-            <p>Kamera-App mit 15 Live-Filmlooks auf der GPU – mit Filmkorn, eigenen Rezepten und LUTs.</p>
-            <a href="https://github.com/tj537/Filmriss36" target="_blank" rel="noopener">Code ansehen ↗</a>
-          </li>
-          <li>
-            <div class="wip-head"><b>NotSure</b><span class="status ready">fertig</span></div>
-            <p>Lostrommel, 3D-Münzwurf und ein Orakel, das wie ein KI-Chat aussieht, aber nur das Schicksal fragt.</p>
-            <a href="https://tj537.github.io/notsure/" target="_blank" rel="noopener">Ausprobieren ↗</a>
+            <div class="wip-head"><b>Filmriss</b><span class="status building">building</span></div>
+            <p>Camera app with 15 live film looks on the GPU – with film grain, custom recipes and LUTs.</p>
+            <a href="https://github.com/tj537/Filmriss36" target="_blank" rel="noopener">View code ↗</a>
           </li>
         </ul>
       </div>
     </section>
 
-    <!-- 06 · Kontakt -->
-    <section class="stop" id="funkspruch" data-name="Funkspruch" data-desc="Kontakt &amp; Feedback">
+    <!-- 05 · Contact -->
+    <section class="stop" id="contact" data-name="Transmission" data-desc="Contact &amp; feedback">
       <div class="panel">
-        <p class="eyebrow"><span>06</span> Funkspruch</p>
-        <h2 class="title">Lass uns <em>reden.</em></h2>
-        <p class="lead">Idee, Bug, Feedback oder einfach Hallo? Ich freu mich über jede Nachricht aus dem All.</p>
+        <p class="eyebrow"><span>05</span> Transmission</p>
+        <h2 class="title">Let's <em>talk.</em></h2>
+        <p class="lead">An idea, a bug, feedback or just hello? I'm happy about every message from outer space.</p>
         <div class="btns stack">
-          <a class="btn big" href="https://github.com/tj537" target="_blank" rel="noopener">Auf GitHub folgen ↗</a>
-          <a class="btn big ghost" href="https://github.com/tj537/tj537.github.io/issues/new" target="_blank" rel="noopener">Idee oder Feedback schicken ↗</a>
-          <button class="btn big ghost" type="button" data-go="0">↺ Zurück zum Start</button>
+          <a class="btn big" href="https://github.com/tj537" target="_blank" rel="noopener">Follow on GitHub ↗</a>
+          <a class="btn big ghost" href="https://github.com/tj537/tj537.github.io/issues/new" target="_blank" rel="noopener">Send an idea or feedback ↗</a>
+          <button class="btn big ghost" type="button" data-go="0">↺ Back to start</button>
         </div>
-        <p class="fineprint">Gebaut mit Three.js · ohne Tracking, ohne Cookies · Code auf <a href="https://github.com/tj537/tj537.github.io" target="_blank" rel="noopener">GitHub</a></p>
+        <p class="fineprint">No tracking, no cookies · Code on <a href="https://github.com/tj537/tj537.github.io" target="_blank" rel="noopener">GitHub</a></p>
       </div>
     </section>
   </main>
 
   <footer class="hud-bottom">
-    <p class="hint"><span class="hint-desk">Scrollen</span><span class="hint-touch">Wischen</span> oder aufs Raumschiff tippen</p>
-    <button class="next" type="button">
-      <span class="next-label">Weiter</span>
-      <span class="next-name">Sternenkarte</span>
-      <span class="next-arr">↓</span>
-    </button>
+    <div class="jump">
+      <button class="jump-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span class="jump-num">01</span>
+        <span class="jump-name">Hangar</span>
+        <span class="jump-arr" aria-hidden="true">▴</span>
+      </button>
+      <ul class="jump-menu" role="listbox" aria-label="Jump to station" hidden></ul>
+    </div>
+    <p class="hint"><span class="hint-desk">Scroll</span><span class="hint-touch">Swipe</span> or tap the spaceship</p>
   </footer>
 
   <noscript><style>.loader,.hud-bottom,.rail{display:none}</style></noscript>

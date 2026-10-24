@@ -20,6 +20,10 @@ const jumpBtn = document.querySelector('.jump-btn');
 const jumpNum = document.querySelector('.jump-num');
 const jumpName = document.querySelector('.jump-name');
 const jumpMenu = document.querySelector('.jump-menu');
+const nextBtn = document.querySelector('.next');
+const nextLabel = document.querySelector('.next-label');
+const nextName = document.querySelector('.next-name');
+const nextArr = document.querySelector('.next-arr');
 document.querySelector('.hud-total').textContent = String(N).padStart(2, '0');
 
 const pad = (i) => String(i + 1).padStart(2, '0');
@@ -50,6 +54,10 @@ function setUI(i) {
   jumpMenu.querySelectorAll('[data-go]').forEach((el) => el.setAttribute('aria-selected', String(+el.dataset.go === i)));
   jumpNum.textContent = pad(i);
   jumpName.textContent = stops[i].dataset.name;
+  const last = i === N - 1;
+  nextLabel.textContent = last ? 'Warp' : 'Next';
+  nextName.textContent = last ? 'Back to start' : stops[i + 1].dataset.name;
+  nextArr.textContent = last ? '↺' : '↓';
 }
 
 function toggleMenu(open = jumpMenu.hidden) {
@@ -571,6 +579,7 @@ function start() {
     if (el.closest('.jump-menu')) { toggleMenu(false); jumpBtn.focus(); }
     go(+el.dataset.go);
   });
+  nextBtn.addEventListener('click', next);
   addEventListener('hashchange', () => {
     const i = stops.findIndex((s) => '#' + s.id === location.hash);
     if (i >= 0) go(i);

@@ -71,10 +71,6 @@ html:not(.space) .loader { display: none; }
 .hud-top > * { pointer-events: auto; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; letter-spacing: .02em; }
 .brand em { font-style: normal; color: var(--ink-3); font-weight: 400; margin-left: 2px; }
-.brand-mark {
-  width: 22px; height: 22px; border-radius: 50%; background: var(--grad);
-  box-shadow: 0 0 18px rgba(139, 123, 255, .6);
-}
 .hud-status { display: flex; align-items: baseline; gap: 6px; font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .hud-num { color: var(--ink); font-weight: 600; }
 .hud-name { margin-left: 10px; padding-left: 12px; border-left: 1px solid var(--line); color: var(--ink-2); letter-spacing: .14em; text-transform: uppercase; font-size: 11px; }
@@ -145,6 +141,21 @@ html:not(.space) .rail { display: none; }
 .jump-menu .t b { font-weight: 600; }
 .jump-menu .t small { color: var(--ink-3); font-size: .8rem; }
 html.flying .jump-btn { opacity: .5; }
+.next {
+  display: flex; align-items: center; gap: 12px; cursor: pointer;
+  padding: 10px 12px 10px 20px; border-radius: 999px;
+  background: var(--glass); border: 1px solid var(--line);
+  -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%);
+  transition: border-color .3s, transform .3s var(--ease), opacity .4s;
+}
+.next:hover { border-color: rgba(94, 231, 255, .5); transform: translateY(-2px); }
+.next-label { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
+.next-name { font-weight: 600; }
+.next-arr {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--grad); color: #0b0820; font-weight: 700;
+}
+html.flying .next { opacity: .35; pointer-events: none; }
 html:not(.space) .hud-bottom { display: none; }
 
 /* ---------- Stops / Panels ---------- */
@@ -278,9 +289,13 @@ html.space .stop.leaving .panel { opacity: 0; transform: translateY(-16px) scale
   .project { padding: 12px 14px; }
   .project p { font-size: .84rem; }
   .hint { display: none; }
-  .jump, .jump-btn { width: 100%; }
-  .jump-name { flex: 1; text-align: left; }
-  .jump-menu { right: 0; min-width: 0; }
+  .hud-bottom { gap: 8px; }
+  .jump { flex: 1; min-width: 0; position: static; }
+  .jump-btn { width: 100%; }
+  .jump-name { flex: 1; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .jump-menu { left: 12px; right: 12px; bottom: calc(100% - 8px); min-width: 0; }
+  .next { padding: 6px 6px 6px 16px; }
+  .next-name { display: none; }
 }
 @media (max-width: 760px) and (max-height: 700px) {
   html.space .stop .panel { max-height: 52dvh; }

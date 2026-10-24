@@ -688,7 +688,6 @@ function start() {
   const Z = new THREE.Vector3(0, 0, 1);
   const camPos = new THREE.Vector3();
   const camLook = new THREE.Vector3();
-  const prevPos = new THREE.Vector3();
   const v1 = new THREE.Vector3(), v2 = new THREE.Vector3();
   let first = true;
   const clock = new THREE.Clock();

@@ -4,6 +4,7 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { initHangar } from './hangar.js?v=5';
 
 const root = document.documentElement;
 const stops = [...document.querySelectorAll('.stop')];
@@ -27,6 +28,7 @@ const nextArr = document.querySelector('.next-arr');
 document.querySelector('.hud-total').textContent = String(N).padStart(2, '0');
 
 const pad = (i) => String(i + 1).padStart(2, '0');
+const hangar = initHangar({ reduced, coarse });
 
 stops.forEach((s, i) => {
   const b = document.createElement('button');
@@ -96,11 +98,13 @@ function showStop(i) {
   });
   const panel = stops[i].querySelector('.panel');
   panel.scrollTop = 0;
+  hangar.setVisible(i === 0);
 }
 
 function leaveStop(i) {
   const s = stops[i];
   s.classList.add('leaving');
+  if (i === 0) hangar.setVisible(false);
   s.inert = true;
   setTimeout(() => { s.classList.remove('active', 'leaving'); }, 380);
 }

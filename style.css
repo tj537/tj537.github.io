@@ -207,14 +207,54 @@ html.space .stop.leaving .panel { opacity: 0; transform: translateY(-16px) scale
 }
 .lead { color: var(--ink-2); font-size: 1.02rem; }
 
-/* Skills */
-.skills { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px !important; }
-.skills li {
-  padding: 8px 14px; border-radius: 999px; font-size: .9rem; font-weight: 500;
+/* Hangar: hero, field picker and word cloud */
+.panel-hero { width: min(540px, 100%); }
+.hero-title { font-size: clamp(3rem, 6.2vw, 5.4rem); line-height: .95; letter-spacing: -.045em; }
+.fields { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px !important; }
+.field-btn {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+  padding: 9px 16px 9px 12px; border-radius: 999px; font-weight: 600; font-size: .95rem;
   background: rgba(255, 255, 255, .035); border: 1px solid var(--line);
-  transition: background .3s, border-color .3s;
+  transition: background .3s, border-color .3s, box-shadow .3s, color .3s;
 }
-.skills li:hover { background: rgba(255, 255, 255, .07); border-color: rgba(139, 123, 255, .45); }
+.field-btn::before {
+  content: ""; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--c); box-shadow: 0 0 10px var(--c);
+}
+.field-btn:hover { border-color: color-mix(in srgb, var(--c) 55%, transparent); }
+.field-btn[aria-pressed="true"] {
+  color: #0b0820; background: var(--c); border-color: var(--c);
+  box-shadow: 0 8px 30px -8px var(--c);
+}
+.field-btn[aria-pressed="true"]::before { background: #0b0820; box-shadow: none; }
+.field-hint {
+  min-height: 3em; font-size: .92rem; color: var(--ink-3);
+  padding-left: 14px; border-left: 2px solid var(--c, var(--line));
+  transition: border-color .4s, color .4s;
+}
+.field-hint[style*="--c: #"] { color: var(--ink); }
+
+.cloud { position: fixed; inset: 0; z-index: 4; pointer-events: none; overflow: hidden; opacity: 0; transition: opacity .8s var(--ease); }
+.cloud.on { opacity: 1; }
+.cloud span {
+  position: absolute; left: 0; top: 0; white-space: nowrap; will-change: transform, opacity;
+  font-size: clamp(15px, 1.6vw, 26px); font-weight: 500; letter-spacing: -.01em;
+  color: color-mix(in srgb, var(--c) 70%, white);
+  text-shadow: 0 0 22px color-mix(in srgb, var(--c) 60%, transparent);
+  transition: color .4s, font-weight .4s;
+}
+.cloud span.lit { color: var(--c); font-weight: 600; }
+html:not(.space) .cloud { display: none; }
+
+/* in space mode the cloud shows the words; the lists stay for screen readers */
+html.space .field-text, html.space .field-words {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+html:not(.space) .fields { display: grid; gap: 18px; }
+html:not(.space) .field-btn { pointer-events: none; }
+html:not(.space) .field-text { margin: 8px 0 6px; color: var(--ink-2); font-size: .92rem; }
+html:not(.space) .field-words { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .85rem; color: var(--ink-3); }
+html:not(.space) .field-hint { display: none; }
 
 /* Projects */
 .projects { display: grid; gap: 14px; }
@@ -276,6 +316,11 @@ html.space .stop.leaving .panel { opacity: 0; transform: translateY(-16px) scale
   html.space .stop { align-items: flex-end; padding: 70px 12px 84px; }
   html.space .stop .panel { max-height: 55dvh; width: 100%; border-radius: 24px; padding: 22px 20px; }
   .title { font-size: 2rem; }
+  .hero-title { font-size: 2.9rem; }
+  .fields { margin-top: 16px !important; gap: 6px; }
+  .field-btn { padding: 7px 13px 7px 10px; font-size: .88rem; }
+  .field-hint { min-height: 3em; font-size: .86rem; }
+  .cloud span { font-size: 13px; }
   .lead { font-size: .95rem; }
   .project { padding: 12px 14px; }
   .project p { font-size: .84rem; }

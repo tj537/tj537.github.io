@@ -7,10 +7,10 @@ You sit behind a spaceship and fly from station to station.
 
 ## Stations
 
-1. **Hangar** – what I do
-2. **Projects** – Solarum, Mindful, Toms Tools
-3. **About me** – what matters to me
-4. **Workshop** – what's in the making
+1. **Hangar** – who I am: pick a field (Design, Marketing, Web, Code) and its keywords light up in the word cloud orbiting the scene
+2. **Projects** – Solarum, Mindful, Toms Tools, Wiggle3DS
+3. **About me** – where I come from and what matters to me
+4. **Workshop** – Tessera, NotSure, Filmriss
 5. **Transmission** – contact & feedback
 
 ## Controls
@@ -22,6 +22,7 @@ You sit behind a spaceship and fly from station to station.
 ## Tech
 
 Plain HTML, CSS and JavaScript with [Three.js](https://threejs.org/) – no build step.
+`main.js` runs the flight, `hangar.js` the field picker and word cloud; the keyword lists live in `index.html`.
 Without WebGL or JavaScript the page shows all content as a simple list.
 Respects "reduce motion". No tracking, no cookies.
 

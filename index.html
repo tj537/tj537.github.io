@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Tom · tj537</title>
-  <meta name="description" content="Tom builds small apps he wants to use himself – Solarum, Mindful, Toms Tools and more. A journey through space.">
+  <meta name="description" content="Tom – media designer, marketer and developer from Germany. Rust apps, websites and a 3DS app, presented as a flight through space.">
   <meta name="theme-color" content="#05040d">
   <meta property="og:title" content="Tom · tj537">
-  <meta property="og:description" content="Small apps, good design, open code. Hop in and fly along.">
+  <meta property="og:description" content="Design, marketing, web and code in one person. Hop in and fly along.">
   <meta property="og:image" content="https://raw.githubusercontent.com/tj537/solarum/main/docs/images/solarum.jpg">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7bff'/%3E%3Cstop offset='1' stop-color='%235ee7ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='14' fill='url(%23g)'/%3E%3Cellipse cx='32' cy='32' rx='29' ry='9' fill='none' stroke='%23ffb38a' stroke-width='3' transform='rotate(-24 32 32)'/%3E%3C/svg%3E">
@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
   <script type="importmap">
     {
       "imports": {
@@ -40,6 +40,7 @@
 <body>
   <canvas id="space" aria-hidden="true"></canvas>
   <div class="warp-veil" aria-hidden="true"></div>
+  <div class="cloud" aria-hidden="true"></div>
 
   <div class="loader" aria-hidden="true">
     <div class="loader-orb"></div>
@@ -60,37 +61,47 @@
 
   <main id="stops">
 
-    <!-- 01 · Links -->
-    <section class="stop" id="hangar" data-name="Hangar" data-desc="What I do">
-      <div class="panel">
+    <!-- 01 · Hangar -->
+    <section class="stop" id="hangar" data-name="Hangar" data-desc="Who I am">
+      <div class="panel panel-hero">
         <p class="eyebrow"><span>01</span> Hangar</p>
-        <h1 class="title">Hi, I'm <em>Tom.</em></h1>
-        <p class="lead">I build small apps that I want to use myself – and learn programming with AI along the way.</p>
-        <ul class="skills">
-          <li>Marketing &amp; strategy</li>
-          <li>SEO &amp; paid search</li>
-          <li>Branding</li>
-          <li>UX &amp; interface design</li>
-          <li>Layout &amp; typography</li>
-          <li>Photography &amp; retouching</li>
-          <li>Websites &amp; web apps</li>
-          <li>Rust desktop apps</li>
-          <li>Creative coding &amp; 3D</li>
-          <li>AI-assisted coding</li>
-          <li>Open source</li>
-        </ul>
+        <h1 class="title hero-title">Hi, I'm <em>Tom.</em></h1>
+        <p class="lead">Media designer by training, marketer by day, developer by night. I like doing the whole thing – from the first idea to the last pixel to the people who find it.</p>
+        <div class="fields" role="group" aria-label="What I do">
+          <div class="field" style="--c: #c26bff">
+            <button type="button" class="field-btn" aria-pressed="false">Design</button>
+            <p class="field-text">Trained media designer: brands, layouts, type, interfaces and photo retouching.</p>
+            <ul class="field-words"><li>Branding</li><li>Typography</li><li>Layout</li><li>UX design</li><li>Interfaces</li><li>Retouching</li><li>Print</li><li>Colour</li></ul>
+          </div>
+          <div class="field" style="--c: #5ee7ff">
+            <button type="button" class="field-btn" aria-pressed="false">Marketing</button>
+            <p class="field-text">Dual student in marketing management, thinking about who a page is for before what it says.</p>
+            <ul class="field-words"><li>Strategy</li><li>SEO</li><li>Paid search</li><li>Analytics</li><li>Content</li><li>Copywriting</li><li>Campaigns</li><li>Social</li></ul>
+          </div>
+          <div class="field" style="--c: #ffb38a">
+            <button type="button" class="field-btn" aria-pressed="false">Web</button>
+            <p class="field-text">Two years of looking after company websites and shops – plus 3D sites for fun.</p>
+            <ul class="field-words"><li>Websites</li><li>WordPress</li><li>Shopware</li><li>Web apps</li><li>Three.js</li><li>Tech SEO</li><li>Accessibility</li></ul>
+          </div>
+          <div class="field" style="--c: #c8ff3d">
+            <button type="button" class="field-btn" aria-pressed="false">Code</button>
+            <p class="field-text">Desktop apps in Rust, web apps and a Nintendo 3DS app – built with AI as my pair programmer.</p>
+            <ul class="field-words"><li>Rust</li><li>TypeScript</li><li>Tauri</li><li>egui</li><li>3DS homebrew</li><li>Open source</li><li>AI pairing</li><li>Creative coding</li></ul>
+          </div>
+        </div>
+        <p class="field-hint" aria-live="polite">Pick a field – or just enjoy the view.</p>
       </div>
     </section>
 
     <!-- 02 · Projects -->
-    <section class="stop" id="projects" data-name="Projects" data-desc="Solarum, Mindful, Toms Tools">
+    <section class="stop" id="projects" data-name="Projects" data-desc="Solarum, Mindful, Toms Tools, Wiggle3DS">
       <div class="panel panel-wide">
         <p class="eyebrow"><span>02</span> Projects</p>
-        <h2 class="title">What I'm <em>building.</em></h2>
+        <h2 class="title">What I've <em>shipped.</em></h2>
         <div class="projects">
           <article class="project" style="--hue: 265">
             <h3>Solarum <span class="tag">Rust</span></h3>
-            <p>A drum machine for people who have never used one. Every sound is an orbit, every beat a planet – bass and acid included. Solari the robot rolls grooves or plays a whole set with drops.</p>
+            <p>A techno and EDM drum machine for people who have never used one. Every track is an orbit, every beat a planet, the sun is the play button. 100% synthesized, with drops, acid lines and an auto mode.</p>
             <div class="btns">
               <a class="btn" href="https://tj537.github.io/solarum/" target="_blank" rel="noopener">Website</a>
               <a class="btn ghost" href="https://github.com/tj537/solarum" target="_blank" rel="noopener">Code</a>
@@ -112,21 +123,29 @@
               <a class="btn ghost" href="https://github.com/tj537/toms-tools" target="_blank" rel="noopener">Code</a>
             </div>
           </article>
+          <article class="project" style="--hue: 80">
+            <h3>Wiggle3DS <span class="tag">C</span></h3>
+            <p>A retro photo studio for the New Nintendo 3DS: shoot with both cameras, turn the 3D pair into wigglegram GIFs and pick from 50 filters. Homebrew, installed with a QR code.</p>
+            <div class="btns">
+              <a class="btn" href="https://github.com/tj537/Wiggle3DS/releases/latest" target="_blank" rel="noopener">Download</a>
+              <a class="btn ghost" href="https://github.com/tj537/Wiggle3DS" target="_blank" rel="noopener">Code</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- 03 · About -->
-    <section class="stop" id="about" data-name="About me" data-desc="What matters to me">
+    <section class="stop" id="about" data-name="About me" data-desc="Where I come from">
       <div class="panel">
         <p class="eyebrow"><span>03</span> About me</p>
-        <h2 class="title">What <em>matters to me.</em></h2>
-        <p class="lead">I'm Tom from Germany. I build software the way I'd want it myself: small, fast, beautiful – and honest with the people who use it.</p>
+        <h2 class="title">Many fields, <em>one person.</em></h2>
+        <p class="lead">I'm Tom, 25, from Heidenheim in southern Germany. I trained as a media designer, now study marketing management and look after company websites. In the evenings I build the apps I miss – and one day I want to do all of it on my own.</p>
         <ul class="values">
-          <li><span class="v-ico">◐</span><div><b>Useful everyday apps</b><p>Small, fast and modern. Written in HTML or Rust – tools that just work.</p></div></li>
-          <li><span class="v-ico">✦</span><div><b>Design &amp; UX</b><p>I love unconventional, intuitive interfaces with strong aesthetics – and apps you can make your own.</p></div></li>
-          <li><span class="v-ico">◎</span><div><b>Privacy &amp; open source</b><p>Your files stay on your computer. The code stays open. No tracking, no cookies – not here either.</p></div></li>
-          <li><span class="v-ico">∞</span><div><b>Learning with AI</b><p>Every project is also an experiment: how far can I get when a human and an AI build together?</p></div></li>
+          <li><span class="v-ico">◐</span><div><b>Design first</b><p>Unconventional, intuitive interfaces with a strong look – and apps you can make your own.</p></div></li>
+          <li><span class="v-ico">✦</span><div><b>Small and fast</b><p>Tools that start instantly and just work. Like old, well-built things: made to last.</p></div></li>
+          <li><span class="v-ico">◎</span><div><b>Open by default</b><p>Your files stay on your computer, the code stays open. No tracking, no cookies – not here either.</p></div></li>
+          <li><span class="v-ico">∞</span><div><b>Learning with AI</b><p>Every project is an experiment: how far can a designer get when a human and an AI build together?</p></div></li>
         </ul>
       </div>
     </section>
@@ -135,13 +154,18 @@
     <section class="stop" id="workshop" data-name="Workshop" data-desc="What's in the making">
       <div class="panel">
         <p class="eyebrow"><span>04</span> Workshop</p>
-        <h2 class="title">Currently <em>in progress.</em></h2>
-        <p class="lead">Experiments, prototypes and things that are still growing.</p>
+        <h2 class="title">Still on <em>the bench.</em></h2>
+        <p class="lead">Experiments and early versions – open to look at, not finished yet.</p>
         <ul class="wip">
           <li>
-            <div class="wip-head"><b>Tessera</b><span class="status building">building</span></div>
+            <div class="wip-head"><b>Tessera</b><span class="status ready">first release</span></div>
             <p>Generative posters: pick a design, turn the knobs, export a print-ready PNG up to A2.</p>
             <a href="https://github.com/tj537/tessera" target="_blank" rel="noopener">View code ↗</a>
+          </li>
+          <li>
+            <div class="wip-head"><b>NotSure</b><span class="status ready">playable</span></div>
+            <p>For when you can't decide: a ball machine, a coin flip, a fake AI oracle and a finger chooser.</p>
+            <a href="https://tj537.github.io/notsure/" target="_blank" rel="noopener">Try it ↗</a>
           </li>
           <li>
             <div class="wip-head"><b>Filmriss</b><span class="status building">building</span></div>
@@ -186,6 +210,6 @@
   </footer>
 
   <noscript><style>.loader,.hud-bottom,.rail{display:none}</style></noscript>
-  <script type="module" src="main.js?v=4"></script>
+  <script type="module" src="main.js?v=5"></script>
 </body>
 </html>

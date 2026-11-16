@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Tom · tj537</title>
-  <meta name="description" content="Tom – media designer, marketer and developer from Germany. Rust apps, websites and a 3DS app, presented as a flight through space.">
+  <meta name="description" content="Tom – media designer, marketer and developer from Germany. Rust apps, websites, a 3DS app and a homelab, presented as a flight through space.">
   <meta name="theme-color" content="#05040d">
   <meta property="og:title" content="Tom · tj537">
-  <meta property="og:description" content="Design, marketing, web and code in one person. Hop in and fly along.">
+  <meta property="og:description" content="Design, marketing, web, code and hosting in one person. Hop in and fly along.">
   <meta property="og:image" content="https://raw.githubusercontent.com/tj537/solarum/main/docs/images/solarum.jpg">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7bff'/%3E%3Cstop offset='1' stop-color='%235ee7ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='14' fill='url(%23g)'/%3E%3Cellipse cx='32' cy='32' rx='29' ry='9' fill='none' stroke='%23ffb38a' stroke-width='3' transform='rotate(-24 32 32)'/%3E%3C/svg%3E">
@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
   <script type="importmap">
     {
       "imports": {
@@ -66,7 +66,7 @@
       <div class="panel panel-hero">
         <p class="eyebrow"><span>01</span> Hangar</p>
         <h1 class="title hero-title">Hi, I'm <em>Tom.</em></h1>
-        <p class="lead">Media designer by training, marketer by day, developer by night. I like doing the whole thing – from the first idea to the last pixel to the people who find it.</p>
+        <p class="lead">I never picked just one thing. So I design, market, code and host – often all for the same project.</p>
         <div class="fields" role="group" aria-label="What I do">
           <div class="field" style="--c: #c26bff">
             <button type="button" class="field-btn" aria-pressed="false">Design</button>
@@ -88,13 +88,18 @@
             <p class="field-text">Desktop apps in Rust, web apps and a Nintendo 3DS app – built with AI as my pair programmer.</p>
             <ul class="field-words"><li>Rust</li><li>TypeScript</li><li>Tauri</li><li>egui</li><li>3DS homebrew</li><li>Open source</li><li>AI pairing</li><li>Creative coding</li></ul>
           </div>
+          <div class="field" style="--c: #ff7ad9">
+            <button type="button" class="field-btn" aria-pressed="false">Homelab</button>
+            <p class="field-text">A mini PC in the basement that hosts a neighbourhood flea market, several websites and our photos.</p>
+            <ul class="field-words"><li>Self-hosting</li><li>Linux</li><li>Docker</li><li>Caddy</li><li>Tailscale</li><li>Backups</li><li>Immich</li></ul>
+          </div>
         </div>
         <p class="field-hint" aria-live="polite">Pick a field – or just enjoy the view.</p>
       </div>
     </section>
 
     <!-- 02 · Projects -->
-    <section class="stop" id="projects" data-name="Projects" data-desc="Solarum, Mindful, Toms Tools, Wiggle3DS">
+    <section class="stop" id="projects" data-name="Projects" data-desc="Apps, a 3DS app and my homelab">
       <div class="panel panel-wide">
         <p class="eyebrow"><span>02</span> Projects</p>
         <h2 class="title">What I've <em>shipped.</em></h2>
@@ -130,6 +135,10 @@
               <a class="btn" href="https://github.com/tj537/Wiggle3DS/releases/latest" target="_blank" rel="noopener">Download</a>
               <a class="btn ghost" href="https://github.com/tj537/Wiggle3DS" target="_blank" rel="noopener">Code</a>
             </div>
+          </article>
+          <article class="project" style="--hue: 320">
+            <h3>Homelab <span class="tag">Docker</span></h3>
+            <p>A mini PC in my basement running Debian and Docker. It hosts an internal flea market web app for our neighbourhood, several websites, photo backup, a media library and a dashboard – reachable through Tailscale, with no open router ports.</p>
           </article>
         </div>
       </div>
@@ -210,6 +219,6 @@
   </footer>
 
   <noscript><style>.loader,.hud-bottom,.rail{display:none}</style></noscript>
-  <script type="module" src="main.js?v=5"></script>
+  <script type="module" src="main.js?v=6"></script>
 </body>
 </html>

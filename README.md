@@ -7,8 +7,8 @@ You sit behind a spaceship and fly from station to station.
 
 ## Stations
 
-1. **Hangar** – who I am: pick a field (Design, Marketing, Web, Code) and its keywords light up in the word cloud orbiting the scene
-2. **Projects** – Solarum, Mindful, Toms Tools, Wiggle3DS
+1. **Hangar** – who I am: pick a field (Design, Marketing, Web, Code, Homelab) and its keywords light up in the word cloud orbiting the scene
+2. **Projects** – Solarum, Mindful, Toms Tools, Wiggle3DS, Homelab
 3. **About me** – where I come from and what matters to me
 4. **Workshop** – Tessera, NotSure, Filmriss
 5. **Transmission** – contact & feedback

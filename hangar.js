@@ -10,6 +10,7 @@ const ORBITS = [
   { radius: 0.8, tilt: 1.32, roll: 0.24, speed: -0.09 },
   { radius: 0.62, tilt: 1.12, roll: 0.58, speed: 0.11 },
   { radius: 0.9, tilt: 1.38, roll: -0.08, speed: -0.06 },
+  { radius: 0.72, tilt: 1.28, roll: -0.62, speed: 0.08 },
 ];
 
 export function initHangar({ reduced, coarse }) {

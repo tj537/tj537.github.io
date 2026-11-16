@@ -4,7 +4,7 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { initHangar } from './hangar.js?v=5';
+import { initHangar } from './hangar.js?v=6';
 
 const root = document.documentElement;
 const stops = [...document.querySelectorAll('.stop')];
